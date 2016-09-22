@@ -13,9 +13,10 @@ and method of generating passwords.
 
 # Installation
 1. Install NodeJS if you haven't already https://nodejs.org
-2. Type `npm install -g passgen-cli` into your terminal or command window
-3. Type `passgen -s` and hit enter to launch the setup process. If you haven't used passgen before a random salt will have been generated for you. Replace this salt with your own if you've already used passgen elsewhere.
-4. Done. You can now generate passwords.
+2. If you're on Linux, make sure xclip is isntalled (`sudo apt-get install xclip`, or equivalent command for your distro)
+3. Type `npm install -g passgen-cli` into your terminal or command window
+4. Type `passgen -s` and hit enter to launch the setup process. If you haven't used passgen before a random salt will have been generated for you. Replace this salt with your own if you've already used passgen elsewhere.
+5. Done. You can now generate passwords.
 
 ## Links to Dependencies
 - Base91 https://github.com/mscdex/base91.js
