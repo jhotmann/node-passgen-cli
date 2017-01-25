@@ -2,8 +2,11 @@
 var argv = require('minimist')(process.argv.slice(2));
 var fs = require('fs-extra');
 var os = require('os');
+var pkgjson = require('./package.json');
 var prompt = require('prompt');
 var thecommand = require('./');
+
+var commandName = Object.keys(pkgjson.bin)[0];
 
 // Read config or create it if not exists
 var configDir;
@@ -26,8 +29,8 @@ if (config === null) {
 // Do stuff based on arguments
 if (argv.help || argv.h) { // Display help
   console.log('');
-  console.log('Usage: %s "your passphrase here"', 'passgen');
-  console.log(' Or simply type %s to be prompted for your passphrase', 'passgen');
+  console.log('Usage: %s "your passphrase here"', commandName);
+  console.log(' Or simply type %s to be prompted for your passphrase', commandName);
   console.log('');
   console.log(' The resulting password will be placed in your clipboard for pasting');
   console.log('');
@@ -35,6 +38,7 @@ if (argv.help || argv.h) { // Display help
   console.log('');
   console.log(' -h, --help    Display this usage info');
   console.log(' -s, --setup   Will guide you through the setup process');
+  console.log(' -v            Write %s version number', commandName);
   process.exit(0);
 } else if (argv.setup || argv.s) { // do setup
   console.log('');
@@ -73,6 +77,8 @@ if (argv.help || argv.h) { // Display help
       console.log('Configuration saved!');
     }
   });
+} else if (argv.v) {
+  console.log(pkgjson.version);
 } else if (argv.prompt || argv.p || argv._.length === 0) { // Prompt for passphrase
   console.log('');
   console.log('===============================================================================');
