@@ -1,5 +1,7 @@
 # How it works
-Type passgen "some passphrase here" into the terminal or command prompt. PassGen takes your input string,
+Type ```passgen "some passphrase here"``` into the terminal or command prompt.
+Or you can just type ```passgen``` to be prompted for your passphrase keeping your passphrase
+out of your terminal history. PassGen takes your input string,
 appends a unique salt string to it, and then generates a hash. The resulting hash is then
 base91 encoded so that it uses all uppercase and lowercase letters, numbers, and standard
 symbols.  A subset of 15-100 (default is 40 and can be changed in the setup) characters

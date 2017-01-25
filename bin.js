@@ -27,6 +27,7 @@ if (config === null) {
 if (argv.help || argv.h) { // Display help
   console.log('');
   console.log('Usage: %s "your passphrase here"', 'passgen');
+  console.log(' Or simply type %s to be prompted for your passphrase', 'passgen');
   console.log('');
   console.log(' The resulting password will be placed in your clipboard for pasting');
   console.log('');
@@ -68,6 +69,26 @@ if (argv.help || argv.h) { // Display help
     fs.writeJson(configDir + '/settings.json', config);
     console.log('');
     console.log('Configuration saved!');
+  });
+} else if (argv.prompt || argv.p || argv._.length === 0) { // Prompt for passphrase
+  console.log('');
+  console.log('===============================================================================');
+  console.log('==                                  PassGen                                  ==');
+  console.log('===============================================================================');
+  console.log('');
+  console.log('Input your passphrase');
+  console.log('');
+  var schema = {
+    properties: {
+      passphrase: {
+        hidden: true,
+        description: ' '
+      }
+    }
+  };
+  prompt.start();
+  prompt.get(schema, function (err, result) {
+    thecommand(result.passphrase, config)
   });
 } else {
   thecommand(argv._[0], config);

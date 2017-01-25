@@ -1,6 +1,6 @@
 {
   "name": "passgen-cli",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A simple tool for generating passwords",
   "main": "index.js",
   "preferGlobal": true,
