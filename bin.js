@@ -44,6 +44,7 @@ if (argv.help || argv.h) { // Display help
   console.log('');
   console.log('Input a new value or press enter to keep the existing value (in parentheses)');
   console.log('');
+  prompt.message = 'Setting';
   var schema = {
     properties: {
       salt: {
@@ -62,13 +63,15 @@ if (argv.help || argv.h) { // Display help
   };
   prompt.start();
   prompt.get(schema, function (err, result) {
-    config = {
-      salt: result.salt,
-      length: result.length
-    };
-    fs.writeJson(configDir + '/settings.json', config);
-    console.log('');
-    console.log('Configuration saved!');
+    if (result) {
+      config = {
+        salt: result.salt,
+        length: result.length
+      };
+      fs.writeJson(configDir + '/settings.json', config);
+      console.log('');
+      console.log('Configuration saved!');
+    }
   });
 } else if (argv.prompt || argv.p || argv._.length === 0) { // Prompt for passphrase
   console.log('');
@@ -76,8 +79,8 @@ if (argv.help || argv.h) { // Display help
   console.log('==                                  PassGen                                  ==');
   console.log('===============================================================================');
   console.log('');
-  console.log('Input your passphrase');
-  console.log('');
+  prompt.message = 'Input your passphrase';
+  prompt.delimiter = '';
   var schema = {
     properties: {
       passphrase: {
@@ -88,7 +91,7 @@ if (argv.help || argv.h) { // Display help
   };
   prompt.start();
   prompt.get(schema, function (err, result) {
-    thecommand(result.passphrase, config)
+    if (result) thecommand(result.passphrase, config);
   });
 } else {
   thecommand(argv._[0], config);
