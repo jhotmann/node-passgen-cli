@@ -20,6 +20,8 @@ and method of generating passwords.
 4. Type `passgen -s` and hit enter to launch the setup process. If you haven't used passgen before a random salt will have been generated for you. Replace this salt with your own if you've already used passgen elsewhere.
 5. Done. You can now generate passwords.
 
+If you would like to add a prompt window for PassGen to OSX's Automator follow [the instructions here](instructions/MacAutomator.md).
+
 ## Links to Dependencies
 - Base91 https://github.com/mscdex/base91.js
 - Skein hash https://github.com/drostie/sha3-js
