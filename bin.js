@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var argv = require('minimist')(process.argv.slice(2));
+var argv = require('minimist')(process.argv.slice(2), {boolean: ['d', 'display', 'h', 'help', 'p', 'prompt', 's', 'setup', 'v']});
 var fs = require('fs-extra');
 var os = require('os');
 var pkgjson = require('./package.json');
@@ -27,7 +27,12 @@ if (config === null) {
 }
 
 // Do stuff based on arguments
+config.hidden = true;
+if (argv.d || argv.display) config.hidden = false;
+if (argv.l) config.length = argv.l;
+else if (argv.length) config.length = argv.length;
 if (argv.help || argv.h) { // Display help
+  console.log(commandName + ' v' + pkgjson.version);
   console.log('');
   console.log('Usage: %s "your passphrase here"', commandName);
   console.log(' Or simply type %s to be prompted for your passphrase', commandName);
@@ -36,9 +41,11 @@ if (argv.help || argv.h) { // Display help
   console.log('');
   console.log('Options:');
   console.log('');
-  console.log(' -h, --help    Display this usage info');
-  console.log(' -s, --setup   Will guide you through the setup process');
-  console.log(' -v            Write %s version number', commandName);
+  console.log(' -h, --help      Display this usage info');
+  console.log(' -s, --setup     Will guide you through the setup process');
+  console.log(' -d, --display   Display the generated password');
+  console.log(' -l, --length    Override default password length');
+  console.log(' -p, --prompt    Prompt for passphrase');
   process.exit(0);
 } else if (argv.setup || argv.s) { // do setup
   console.log('');

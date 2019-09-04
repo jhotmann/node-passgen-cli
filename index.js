@@ -13,8 +13,7 @@ function thecommand (passphrase, config) {
   var end = start + config.length;
   var hashOut = base91.encode(hash).substring(start, end);
   ncp.copy(hashOut, function () {
-    console.log('');
-    console.log('Password copied to clipboard!');
+    console.log(config.hidden ? 'Password copied to clipboard!' : hashOut);
   });
 }
 
