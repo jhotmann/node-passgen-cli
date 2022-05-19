@@ -8,7 +8,7 @@ const argv = require('minimist')(process.argv.slice(2),
   });
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
-const ncp = require('copy-paste');
+const clipboard = require('clipboardy');
 const os = require('os');
 const pkgjson = require('./package.json');
 const generator = require('.');
@@ -111,7 +111,7 @@ function printOrCopy() {
   if (config.print) {
     console.log(password);
   } else {
-    ncp.copy(password);
+    clipboard.writeSync(password);
   }
 }
 
