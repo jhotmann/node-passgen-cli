@@ -1,6 +1,6 @@
 {
   "name": "passgen-cli",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A simple tool for generating passwords",
   "main": "index.js",
   "preferGlobal": true,
@@ -25,7 +25,7 @@
     "copy-paste": "^1.3.0",
     "fs-extra": "^0.30.0",
     "inquirer": "^7.1.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.6"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

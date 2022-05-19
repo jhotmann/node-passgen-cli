@@ -18,6 +18,9 @@
         "no-console": "off",
         "no-use-before-define": "off",
         "max-len": "off",
-        "strict": "off"
+        "strict": "off",
+        "no-restricted-globals": "off",
+        "no-plusplus": "off",
+        "no-param-reassign": "warn"
     }
 }
